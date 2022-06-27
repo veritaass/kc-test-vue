@@ -11,10 +11,13 @@ let initOptions = {
 }
 
 console.log("keycloak >>>>>>>> ")
-// let keycloak = Keycloak(initOptions);
 let keycloak = null;
-console.log(keycloak)
-if(keycloak == null || keycloak ==  undefined){
+try{
+  keycloak = Keycloak(initOptions);
+}
+catch (err) {}
+
+if(keycloak == null || keycloak ==  undefined || length(keycloak) == 0){
   console.log(" !!!!! ")
   new Vue({
     el: '#app',
