@@ -13,7 +13,10 @@ let initOptions = {
 console.log("keycloak >>>>>>>> ")
 let keycloak = null;
 try{
+  print("call keycloak")
   keycloak = Keycloak(initOptions);
+  print("result is ... ")
+  print(keycloak)  
 }
 catch (err) {}
 
