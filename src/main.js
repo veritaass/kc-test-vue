@@ -26,7 +26,7 @@ catch (err) {
   console.log(err)
 }
 
-if(keycloak == null || keycloak ==  undefined || length(keycloak) == 0){
+if(keycloak == null || keycloak ==  undefined){
   console.log(" keycloak is not connected...T-T ")
   new Vue({
     el: '#app',
