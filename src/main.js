@@ -7,7 +7,10 @@ Vue.use(VueLogger);
 
 let initOptions = {
   // url: 'http://127.0.0.1:8080/auth', realm: 'keycloak-demo', clientId: 'app-vue', onLoad: 'login-required'
-  url: 'https://idp.sk-nemo.com/auth', realm: 'K11-ESS', clientId: 'test_app_vue', onLoad: 'login-required'
+  url: 'https://idp.sk-nemo.com/auth',
+  realm: 'K11-ESS',
+  clientId: 'test_app_vue',
+  onLoad: 'login-required'
 }
 
 console.log("keycloak >>>>>>>> ")
@@ -18,18 +21,23 @@ try{
   console.log("result is ... ")
   console.log(keycloak)  
 }
-catch (err) {}
+catch (err) {
+  console.log("keycloak connection error!! T-T")
+  console.log(err)
+}
 
 if(keycloak == null || keycloak ==  undefined || length(keycloak) == 0){
-  console.log(" !!!!! ")
+  console.log(" keycloak is not connected...T-T ")
   new Vue({
     el: '#app',
     render: h => h(App)
   })
 }
 else{
-  console.log(" @@@@@ ")
-  keycloak.init({ onLoad: initOptions.onLoad }).then((auth) => {
+  console.log(" Keycloak is connected ~~ !!! ")
+  keycloak.init({ 
+    onLoad: initOptions.onLoad 
+  }).success((auth) => {
     if (!auth) {
       window.location.reload();
     } else {
@@ -41,7 +49,7 @@ else{
       })
     }  
   
-  //Token Refresh
+    //Token Refresh
     setInterval(() => {
       keycloak.updateToken(70).then((refreshed) => {
         if (refreshed) {
