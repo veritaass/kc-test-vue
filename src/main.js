@@ -41,8 +41,9 @@ else{
     if (!auth) {
       window.location.reload();
     } else {
-      Vue.$log.info("Authenticated");
-  
+      // Vue.$log.info("Authenticated");
+      console.log(" <><><> Authenticated <><><> ")
+      
       new Vue({
         el: '#app',
         render: h => h(App, { props: { keycloak: keycloak } })
@@ -51,19 +52,22 @@ else{
   
     //Token Refresh
     setInterval(() => {
+      console.log(" <><><> start interval <><><> ")
       keycloak.updateToken(70).then((refreshed) => {
         if (refreshed) {
           Vue.$log.info('Token refreshed' + refreshed);
         } else {
           Vue.$log.warn('Token not refreshed, valid for '
-            + Math.round(keycloak.tokenParsed.exp + keycloak.timeSkew - new Date().getTime() / 1000) + ' seconds');
+          + Math.round(keycloak.tokenParsed.exp + keycloak.timeSkew - new Date().getTime() / 1000) + ' seconds');
         }
       }).catch(() => {
+        console.log(" <><><> error : fail refresh token <><><> ")
         Vue.$log.error('Failed to refresh token');
       });
     }, 6000)
-  
+    
   }).catch(() => {
+    console.log(" <><><> error : authentication faile <><><> ")
     Vue.$log.error("Authenticated Failed");
   });
 }
