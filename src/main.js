@@ -7,7 +7,8 @@ Vue.use(VueLogger);
 
 let initOptions = {
   // url: 'http://127.0.0.1:8080/auth', realm: 'keycloak-demo', clientId: 'app-vue', onLoad: 'login-required'
-  url: 'https://idp.sk-nemo.com/auth',
+  // url: 'https://idp.sk-nemo.com/auth',
+  url: 'https://idp.sk-nemo.com',
   realm: 'K11-ESS',
   clientId: 'test_app_vue',
   onLoad: 'login-required'
@@ -39,10 +40,11 @@ else{
     onLoad: initOptions.onLoad 
   }).then((auth) => {
     if (!auth) {
+      console.log(" <><><> no auth.. <><><> ")
       window.location.reload();
     } else {
-      // Vue.$log.info("Authenticated");
       console.log(" <><><> Authenticated <><><> ")
+      Vue.$log.info("Authenticated");
       
       new Vue({
         el: '#app',
