@@ -46,14 +46,16 @@ else{
       console.log(" <><><> Authenticated <><><> ")
       Vue.$log.info("Authenticated");
       
+      shape_temp = 0
       new Vue({
         el: '#app',
-        render: h => h(App, { props: { keycloak: keycloak } })
+        render: h => h(App, { props: { keycloak: keycloak, shape_temp: shape_temp } })
       })
     }  
   
-    //Token Refresh
+    //Token Refresh    
     setInterval(() => {
+      shape_temp += 1
       console.log(" <><><> start interval <><><> ")
       keycloak.updateToken(70).then((refreshed) => {
         if (refreshed) {
