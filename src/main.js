@@ -26,7 +26,9 @@ catch (err) {
   console.log("keycloak connection error!! T-T")
   console.log(err)
 }
-
+//////////////////// local test
+// keycloak = null
+////////////////////
 if(keycloak == null || keycloak ==  undefined){
   console.log(" keycloak is not connected...T-T ")
   new Vue({
@@ -46,16 +48,14 @@ else{
       console.log(" <><><> Authenticated <><><> ")
       Vue.$log.info("Authenticated");
       
-      shape_temp = 0
       new Vue({
         el: '#app',
-        render: h => h(App, { props: { keycloak: keycloak, shape_temp: shape_temp } })
+        render: h => h(App, { props: { keycloak: keycloak } })
       })
     }  
-  
+    
     //Token Refresh    
     setInterval(() => {
-      shape_temp += 1
       console.log(" <><><> start interval <><><> ")
       keycloak.updateToken(70).then((refreshed) => {
         if (refreshed) {

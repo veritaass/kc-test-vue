@@ -31,7 +31,7 @@
           <h3 style="color: black;">Info</h3>
           <ul>
             <li>clientId: {{keycloak.clientId}}</li>
-            <li>Auth Server Url: {{keycloak.authServerUrl}}</li>
+            <li>Auth Server Url: {{keycloak.authServerUrl}}</li>            
           </ul>
         </div>
       </div>
