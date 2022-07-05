@@ -78,8 +78,8 @@ else{
       if(authorization != undefined){
         console.log(authorization)
         console.log(userAuthList)
-        console.log(!authorization.includes(userAuthList))
-        if(authorization.length && !authorization.includes(userAuthList)){
+        console.log(authorization.includes(userAuthList))
+        if(!authorization.includes(userAuthList)){
           console.log(" <><><> has no auth <><><> ")
           return next({ path: "/not-found" })
         }
