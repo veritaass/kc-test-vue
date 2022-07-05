@@ -4,7 +4,25 @@ import VueLogger from 'vuejs-logger';
 // import * as Keycloak from 'keycloak-js';
 import Keycloak from 'keycloak-js';
 
+import VueRouter from 'vue-router'
+import AdminPage from './Admin.vue'
+import SkccPage from './Skcc.vue'
+
 Vue.use(VueLogger);
+Vue.use(VueRouter);
+
+const routes = [
+  {
+    path:'/admin',
+    component: AdminPage
+  },
+  {
+    path:'/skcc',
+    component: SkccPage
+  }
+]
+
+const router = new VueRouter({ routes });
 
 let initOptions = {
   // url: 'http://127.0.0.1:8080/auth', realm: 'keycloak-demo', clientId: 'app-vue', onLoad: 'login-required'
@@ -34,7 +52,8 @@ if(keycloak == null || keycloak ==  undefined){
   console.log(" keycloak is not connected...T-T ")
   new Vue({
     el: '#app',
-    render: h => h(App)
+    render: h => h(App),
+    router
   })
 }
 else{

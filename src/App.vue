@@ -17,6 +17,9 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
     <div v-if="toggle">
+      <router-link to='/admin'> admin page </router-link>
+      <router-link to='/skcc'> skcc page </router-link>
+      <router-view/>
       <h1>{{ msg }}</h1>
       <h2>User: {{keycloak.idTokenParsed.preferred_username}}</h2>
       <div>
