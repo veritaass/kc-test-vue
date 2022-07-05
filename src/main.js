@@ -70,7 +70,8 @@ else{
       
       new Vue({
         el: '#app',
-        render: h => h(App, { props: { keycloak: keycloak } })
+        render: h => h(App, { props: { keycloak: keycloak } }),
+        router
       })
     }  
     

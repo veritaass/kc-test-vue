@@ -16,10 +16,10 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
-    <div v-if="toggle">
-      <router-link to='/admin'> admin page </router-link>
-      <router-link to='/skcc'> skcc page </router-link>
-      <router-view/>
+    <router-link to='/admin'> admin page </router-link>
+    <router-link to='/skcc'> skcc page </router-link>
+    <router-view/>
+    <div v-if="toggle">      
       <h1>{{ msg }}</h1>
       <h2>User: {{keycloak.idTokenParsed.preferred_username}}</h2>
       <div>
