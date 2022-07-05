@@ -18,6 +18,7 @@
     </ul>
     <router-link to='/admin'> admin page </router-link><br/>
     <router-link to='/skcc'> skcc page </router-link><br/>
+    <router-link to='/not-found'> skcc page </router-link><br/>
     <router-view/>
     <div v-if="toggle">      
       <!-- <h1>{{ msg }}</h1> -->

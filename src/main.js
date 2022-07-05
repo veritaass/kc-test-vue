@@ -8,6 +8,7 @@ import VueRouter from 'vue-router'
 import AdminPage from './Admin.vue'
 import SkccPage from './Skcc.vue'
 import NotFoundPage from './NotFound.vue'
+import { nextTick } from 'vue/types/umd';
 
 Vue.use(VueLogger);
 Vue.use(VueRouter);
@@ -69,22 +70,24 @@ else{
   keycloak.init({ 
     onLoad: initOptions.onLoad 
   }).then((auth) => {
-    // router.beforeEach((to, from, next)=>{
-    //   // console.log(keycloak.idTokenParsed.test_app_groups)
-    //   // console.log(" <><><> to <><><> ")
-    //   // console.log(to)
-    //   const authorization = to.meta.authorization;
-    //   const userAuthList = keycloak.idTokenParsed.test_app_groups
-    //   if(authorization != undefined){
-    //     console.log(authorization)
-    //     console.log(userAuthList)
-    //     console.log(authorization.includes(userAuthList))
-    //     if(!authorization.includes(userAuthList)){
-    //       console.log(" <><><> has no auth <><><> ")
-    //       return next({ path: "/not-found" })
-    //     }
-    //   }
-    // })
+    router.beforeEach((to, from, next)=>{
+      // console.log(keycloak.idTokenParsed.test_app_groups)
+      // console.log(" <><><> to <><><> ")
+      // console.log(to)
+      const authorization = to.meta.authorization;
+      const userAuthList = keycloak.idTokenParsed.test_app_groups
+      if(authorization != undefined){
+        console.log(authorization)
+        console.log(userAuthList)
+        let hasAuth = authorization.filter(x => userAuthList.includes(x))
+        console.log(hasAuth)
+        if(hasAuth.length == 0){
+          console.log(" <><><> has no auth <><><> ")
+          return next({ path: "/not-found" });
+        }
+      }
+      next();
+    })
 
     if (!auth) {
       console.log(" <><><> no auth.. <><><> ")
