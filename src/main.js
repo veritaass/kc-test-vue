@@ -16,12 +16,12 @@ const routes = [
   {
     path:'/admin',
     component: AdminPage,
-    meta: { authorization: ["k11-manager-user"] }
+    role: { authorization: ["test_admin_role"] }
   },
   {
     path:'/skcc',
     component: SkccPage,
-    meta: { authorization: ["k11-admin-skcc"] }
+    role: { authorization: ["test_skcc_role"] }
   },
   {
     path:'/not-found',
@@ -73,7 +73,7 @@ else{
       console.log(keycloak.idTokenParsed.test_app_groups)
       console.log(" <><><> to <><><> ")
       console.log(to)
-      const { authorization } = to.meta;
+      const authorization = to.role;
       if(authorization.length && !authorization.includes(keycloak.idTokenParsed.test_app_groups))
         return next({ path: "/not-found" })
     })
