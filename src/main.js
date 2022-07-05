@@ -38,7 +38,7 @@ let initOptions = {
   onLoad: 'login-required'
 }
 
-console.log("keycloak >>>>>>>> ")
+console.log(" <><><> keycloak <><><> ")
 let keycloak = null;
 try{
   console.log("call keycloak")
@@ -47,7 +47,7 @@ try{
   console.log(keycloak)  
 }
 catch (err) {
-  console.log("keycloak connection error!! T-T")
+  console.log(" <><><> keycloak connection error!! <><><>")
   console.log(err)
 }
 //////////////////// local test
@@ -57,7 +57,7 @@ catch (err) {
 const router = new VueRouter({ routes });
 
 if(keycloak == null || keycloak ==  undefined){
-  console.log(" keycloak is not connected...T-T ")
+  console.log(" <><><> keycloak is not connected... <><><> ")
   new Vue({
     el: '#app',
     render: h => h(App),
@@ -65,16 +65,18 @@ if(keycloak == null || keycloak ==  undefined){
   })
 }
 else{
-  console.log(" Keycloak is connected ~~ !!! ")
+  console.log(" <><><> Keycloak is connected <><><> ")
   keycloak.init({ 
     onLoad: initOptions.onLoad 
   }).then((auth) => {
     router.beforeEach((to, from, next)=>{
-      console.log(keycloak.idTokenParsed.test_app_groups)
-      console.log(" <><><> to <><><> ")
-      console.log(to)
+      // console.log(keycloak.idTokenParsed.test_app_groups)
+      // console.log(" <><><> to <><><> ")
+      // console.log(to)
       const authorization = to.meta;
       console.log(authorization)
+      console.log(keycloak.idTokenParsed.test_app_groups)      
+      console.log(!authorization.includes(keycloak.idTokenParsed.test_app_groups))
       if(authorization.length && !authorization.includes(keycloak.idTokenParsed.test_app_groups))
         return next({ path: "/not-found" })
     })

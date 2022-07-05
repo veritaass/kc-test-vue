@@ -20,7 +20,7 @@
     <router-link to='/skcc'> skcc page </router-link><br/>
     <router-view/>
     <div v-if="toggle">      
-      <h1>{{ msg }}</h1>
+      <!-- <h1>{{ msg }}</h1> -->
       <h2>User: {{keycloak.idTokenParsed.preferred_username}}</h2>
       <div>
         <button class="btn" @click="keycloak.logout()">Logout</button>
