@@ -13,6 +13,7 @@
     "keycloak-js": "^18.0.1",
     "vue": "^2.5.11",
     "vue-logger": "^0.0.4",
+    "vue-router": "^3.5.3",
     "vuejs-logger": "^1.5.5"
   },
   "browserslist": [
