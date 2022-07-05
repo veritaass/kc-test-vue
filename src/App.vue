@@ -16,8 +16,8 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
-    <router-link to='/admin'> admin page </router-link>
-    <router-link to='/skcc'> skcc page </router-link>
+    <router-link to='/admin'> admin page </router-link><br/>
+    <router-link to='/skcc'> skcc page </router-link><br/>
     <router-view/>
     <div v-if="toggle">      
       <h1>{{ msg }}</h1>
