@@ -84,7 +84,7 @@ else{
     //       return next({ path: "/not-found" })
     //     }
     //   }
-    })
+    // })
 
     if (!auth) {
       console.log(" <><><> no auth.. <><><> ")
