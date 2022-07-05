@@ -69,8 +69,10 @@ else{
   keycloak.init({ 
     onLoad: initOptions.onLoad 
   }).then((auth) => {
-    console.log(keycloak.idTokenParsed.test_app_groups)
     router.beforeEach((to, from, next)=>{
+      console.log(keycloak.idTokenParsed.test_app_groups)
+      console.log(" <><><> to <><><> ")
+      console.log(to)
       const { authorization } = to.meta;
       if(authorization.length && !authorization.includes(keycloak.idTokenParsed.test_app_groups))
         return next({ path: "/not-found" })
