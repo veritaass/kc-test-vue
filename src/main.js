@@ -69,21 +69,21 @@ else{
   keycloak.init({ 
     onLoad: initOptions.onLoad 
   }).then((auth) => {
-    router.beforeEach((to, from, next)=>{
-      // console.log(keycloak.idTokenParsed.test_app_groups)
-      // console.log(" <><><> to <><><> ")
-      // console.log(to)
-      const authorization = to.meta.authorization;
-      const userAuthList = keycloak.idTokenParsed.test_app_groups
-      if(authorization != undefined){
-        console.log(authorization)
-        console.log(userAuthList)
-        console.log(authorization.includes(userAuthList))
-        if(!authorization.includes(userAuthList)){
-          console.log(" <><><> has no auth <><><> ")
-          return next({ path: "/not-found" })
-        }
-      }
+    // router.beforeEach((to, from, next)=>{
+    //   // console.log(keycloak.idTokenParsed.test_app_groups)
+    //   // console.log(" <><><> to <><><> ")
+    //   // console.log(to)
+    //   const authorization = to.meta.authorization;
+    //   const userAuthList = keycloak.idTokenParsed.test_app_groups
+    //   if(authorization != undefined){
+    //     console.log(authorization)
+    //     console.log(userAuthList)
+    //     console.log(authorization.includes(userAuthList))
+    //     if(!authorization.includes(userAuthList)){
+    //       console.log(" <><><> has no auth <><><> ")
+    //       return next({ path: "/not-found" })
+    //     }
+    //   }
     })
 
     if (!auth) {
