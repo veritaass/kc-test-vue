@@ -73,11 +73,12 @@ else{
       // console.log(keycloak.idTokenParsed.test_app_groups)
       // console.log(" <><><> to <><><> ")
       // console.log(to)
-      const authorization = to.meta;
+      const authorization = to.meta.authorization;
+      const userAuthList = keycloak.idTokenParsed.test_app_groups
       console.log(authorization)
-      console.log(keycloak.idTokenParsed.test_app_groups)      
-      console.log(!authorization.includes(keycloak.idTokenParsed.test_app_groups))
-      if(authorization.length && !authorization.includes(keycloak.idTokenParsed.test_app_groups))
+      console.log(userAuthList)
+      console.log(!authorization.includes(userAuthList))
+      if(authorization.length && !authorization.includes(userAuthList))
         return next({ path: "/not-found" })
     })
 
