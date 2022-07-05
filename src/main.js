@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueLogger from 'vuejs-logger';
-import * as Keycloak from 'keycloak-js';
+// import * as Keycloak from 'keycloak-js';
+import Keycloak from 'keycloak-js';
 
 Vue.use(VueLogger);
 
@@ -18,7 +19,7 @@ console.log("keycloak >>>>>>>> ")
 let keycloak = null;
 try{
   console.log("call keycloak")
-  keycloak = Keycloak(initOptions);
+  keycloak = new Keycloak(initOptions);
   console.log("result is ... ")
   console.log(keycloak)  
 }
