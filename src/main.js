@@ -8,7 +8,6 @@ import VueRouter from 'vue-router'
 import AdminPage from './Admin.vue'
 import SkccPage from './Skcc.vue'
 import NotFoundPage from './NotFound.vue'
-import { nextTick } from 'vue/types/umd';
 
 Vue.use(VueLogger);
 Vue.use(VueRouter);
