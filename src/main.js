@@ -74,7 +74,7 @@ else{
       // console.log(" <><><> to <><><> ")
       // console.log(to)
       const authorization = to.meta.authorization;
-      const userAuthList = keycloak.idTokenParsed.test_app_groups
+      const userAuthList = keycloak.idTokenParsed.auth_mapper
       if(authorization != undefined){
         console.log(authorization)
         console.log(userAuthList)
